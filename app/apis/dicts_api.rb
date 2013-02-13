@@ -22,7 +22,8 @@ class DictsAPI < Grape::API
       requires :text, type: String
     end
     post 'synonyms' do
-      $redis.smembers params[:text]
+      synonyms = $redis.smembers params[:text]
+      {synonyms: synonyms}
     end
   end
 end

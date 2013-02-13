@@ -33,7 +33,7 @@ $ curl -d '{"text":"我在睡觉，不要打扰我"}' http://localhost:9000/dict
 ### Get synonyms
 
 ```
-$ curl -d '{"text":"本来"}' http://localhost:9000/dicts/synonyms
+curl -d '{"text":"本来"}' http://localhost:9000/dicts/synonyms
 
-["原本","原先","原来"]
+{"synonyms":["原本","原先","原来"]}
 ```
