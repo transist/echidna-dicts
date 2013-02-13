@@ -19,7 +19,7 @@ $ ruby bin/dicts
 start server
 
 ```
-ruby app.rb -sv
+$ ruby app.rb -sv
 ```
 
 ### Get segments

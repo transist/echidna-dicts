@@ -3,4 +3,5 @@
 $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
 require "dicts"
 
-Dicts::Parser::ModernChineseDictParser.new.parse
+#Dicts::Parser::ModernChineseDictParser.new.parse
+Dicts::Parser::SynonymsDictParser.new.parse
