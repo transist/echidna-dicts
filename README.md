@@ -11,7 +11,7 @@ $ bundle install
 ## Parse dicts
 
 ```
-$ ruby bin/dicts
+$ bundle exec ruby bin/dicts
 ```
 
 ## APIs
