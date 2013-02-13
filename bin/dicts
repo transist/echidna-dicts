@@ -1,7 +1,14 @@
 #!/usr/bin/env ruby
 
 $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
+ENV["RACK_ENV"] ||= "development"
+
+require "bundler"
+Bundler.require(:default, ENV["RACK_ENV"].to_sym)
 require "dicts"
 
-#Dicts::Parser::ModernChineseDictParser.new.parse
-Dicts::Parser::SynonymsDictParser.new.parse
+EM.synchrony do
+  #Dicts::Parser::ModernChineseDictParser.new.parse
+  Dicts::Parser::SynonymsDictParser.new.parse
+  EM.stop
+end

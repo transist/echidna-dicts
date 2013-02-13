@@ -17,5 +17,12 @@ class DictsAPI < Grape::API
       status 200
       {segments: segments}
     end
+
+    params do
+      requires :text, type: String
+    end
+    post 'synonyms' do
+      $redis.smembers params[:text]
+    end
   end
 end

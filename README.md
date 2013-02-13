@@ -4,7 +4,7 @@ dicts system for echidna.
 
 ## Setup
 
-```ruby
+```
 $ bundle install
 ```
 
@@ -28,4 +28,12 @@ $ ruby app.rb -sv
 $ curl -d '{"text":"我在睡觉，不要打扰我"}' http://localhost:9000/dicts/segments
 
 {"segments":["我","在","睡觉","，","不要","打扰","我"]}
+```
+
+### Get synonyms
+
+```
+$ curl -d '{"text":"本来"}' http://localhost:9000/dicts/synonyms
+
+["原本","原先","原来"]
 ```

@@ -1,4 +1,6 @@
 # coding: utf-8
+load 'config/app.rb'
+
 module Dicts
   module Parser
     class SynonymsDictParser
@@ -7,7 +9,9 @@ module Dicts
       def parse
         File.open(DICT_FILENAME, 'r') do |file|
           file.lines.each do |line|
-            p line.strip.split(',')
+            word, synonym = line.strip.split(',')
+            $redis.sadd(word, synonym)
+            $redis.sadd(synonym, word)
           end
         end
       end
