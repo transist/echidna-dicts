@@ -35,8 +35,8 @@ then followed the notes
 install ruby
 
 ```
-$ rvm install 1.9.3-p385-falcon --patch falcon
-$ rvm use 1.9.3-p385-falcon --default
+$ rvm install 1.9.3-p327-falcon --patch falcon
+$ rvm use 1.9.3-p327-falcon --default
 ```
 
 install bundler (ruby gems management)
