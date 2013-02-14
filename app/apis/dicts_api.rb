@@ -8,13 +8,7 @@ class DictsAPI < Grape::API
   end
   resource 'dicts' do
     post 'segments' do
-      algor = RMMSeg::Algorithm.new(params[:text])
-      segments = []
-      loop do
-        tok = algor.next_token
-        break if tok.nil?
-        segments << tok.text
-      end
+      segments = Segment.get(params[:text])
       status 200
       {segments: segments}
     end
@@ -23,7 +17,7 @@ class DictsAPI < Grape::API
       requires :text, type: String
     end
     post 'synonyms' do
-      synonyms = $redis.smembers params[:text]
+      synonyms = Synonym.get(params[:text])
       {synonyms: synonyms}
     end
   end

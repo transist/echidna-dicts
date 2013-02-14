@@ -9,9 +9,8 @@ module Dicts
       def parse
         File.open(DICT_FILENAME, 'r') do |file|
           file.lines.each do |line|
-            word, synonym = line.strip.split(',')
-            $redis.sadd(word, synonym)
-            $redis.sadd(synonym, word)
+            word1, word2 = line.strip.split(',')
+            Synonym.set(word1, word2)
           end
         end
       end
