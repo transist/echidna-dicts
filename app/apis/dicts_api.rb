@@ -18,6 +18,7 @@ class DictsAPI < Grape::API
     end
     post 'synonyms' do
       synonyms = Synonym.get(params[:text])
+      status 200
       {synonyms: synonyms}
     end
   end
