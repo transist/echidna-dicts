@@ -72,7 +72,7 @@ $ ruby app.rb -sv
 ### Get segments
 
 ```
-$ curl -d '{"text":"我在睡觉，不要打扰我"}' http://localhost:9000/dicts/segments
+$ curl -d '{"text":"我在睡觉，不要打扰我"}' http://localhost:9000/v1/dicts/segments
 
 {"segments":["我","在","睡觉","，","不要","打扰","我"]}
 ```
@@ -80,7 +80,7 @@ $ curl -d '{"text":"我在睡觉，不要打扰我"}' http://localhost:9000/dict
 ### Get synonyms
 
 ```
-curl -d '{"text":"本来"}' http://localhost:9000/dicts/synonyms
+curl -d '{"text":"本来"}' http://localhost:9000/v1/dicts/synonyms
 
 {"synonyms":["原本","原先","原来"]}
 ```
