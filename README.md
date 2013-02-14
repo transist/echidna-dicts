@@ -57,7 +57,8 @@ $ bundle install
 ## Parse dicts
 
 ```
-$ git submodule add git@github.com:transist/echidna-dicts-data.git dicts
+$ git submodule init
+$ git submodule update
 $ bundle exec ruby bin/dicts
 ```
 
