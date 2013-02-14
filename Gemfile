@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'msworddoc-extractor'
+gem 'msworddoc-extractor', require: false
 gem 'rmmseg-cpp', require: 'rmmseg'
 gem 'hiredis'
 gem 'redis'
