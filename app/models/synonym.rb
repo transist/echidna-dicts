@@ -1,7 +1,8 @@
+# coding: utf-8
 class Synonym
   class <<self
     def get(text)
-      $redis.smembers text
+      $redis.smembers key(text)
     end
 
     def set(word1, word2)

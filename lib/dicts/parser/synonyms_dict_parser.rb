@@ -1,6 +1,4 @@
 # coding: utf-8
-load 'config/app.rb'
-
 module Dicts
   module Parser
     class SynonymsDictParser

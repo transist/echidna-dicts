@@ -1,3 +1,4 @@
+# coding: utf-8
 class Segment
   def self.get(text)
     algorithm = RMMSeg::Algorithm.new(text)

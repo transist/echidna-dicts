@@ -8,3 +8,8 @@ gem 'em-synchrony', require: 'em-synchrony'
 gem 'yajl-ruby', require: 'yajl'
 gem 'goliath', require: false
 gem 'grape'
+
+group :test do
+  gem 'rspec'
+  gem 'rack-test'
+end
