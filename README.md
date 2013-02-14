@@ -4,7 +4,53 @@ dicts system for echidna.
 
 ## Setup
 
+install redis-server on debian
+
 ```
+$ sudo apt-get install redis-server
+```
+
+or mac
+
+```
+$ brew install redis
+```
+
+install rvm for ruby
+
+```
+$ curl -L https://get.rvm.io | bash -s stable --ruby
+$ source ~/.rvm/scripts/rvm
+$ echo 'rvm_trust_rvmrcs_flag=1' > ~/.rvmrc
+```
+
+install dependencies for ruby
+
+```
+$ rvm requirements
+```
+
+then followed the notes
+
+install ruby
+
+```
+$ rvm install 1.9.3-p385-falcon --patch falcon
+$ rvm use 1.9.3-p385-falcon --default
+```
+
+install bundler (ruby gems management)
+
+```
+$ rvm gemset use global
+$ gem install bundler
+$ rvm gemset use default
+```
+
+install app dependencies
+
+```
+$ cd <app path>
 $ bundle install
 ```
 
