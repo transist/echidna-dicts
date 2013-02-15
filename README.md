@@ -56,6 +56,8 @@ $ bundle install
 
 ## Parse dicts
 
+synonym dicts and stopwords
+
 ```
 $ git submodule init
 $ git submodule update
@@ -93,7 +95,7 @@ $ ruby app.rb -sv
 ```
 $ curl -d '{"text":"我在睡觉，不要打扰我"}' http://localhost:9000/v1/dicts/segments
 
-{"segments":["我","在","睡觉","，","不要","打扰","我"]}
+{"segments":["打扰","睡觉"]}
 ```
 
 ### Get synonyms
