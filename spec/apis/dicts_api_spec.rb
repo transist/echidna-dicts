@@ -35,7 +35,10 @@ describe DictsAPI do
     end
 
     it "should get segments as JSON" do
-      expect(MultiJson.load(last_response.body)).to eq({"synonyms" => ["原本","原先","原来"]})
+      synonyms = MultiJson.load(last_response.body)["synonyms"]
+      expect(synonyms).to be_include "原本"
+      expect(synonyms).to be_include "原先"
+      expect(synonyms).to be_include "原来"
     end
   end
 end

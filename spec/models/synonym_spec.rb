@@ -9,6 +9,9 @@ describe Synonym do
   end
 
   it "should get synonyms" do
-    expect(Synonym.get("本来")).to eq ["原本","原先","原来"]
+    synonyms = Synonym.get("本来")
+    expect(synonyms).to be_include "原本"
+    expect(synonyms).to be_include "原先"
+    expect(synonyms).to be_include "原来"
   end
 end
