@@ -7,9 +7,13 @@ class Segment
       loop do
         token = algorithm.next_token
         break if token.nil?
-        segments << token.text
+        segments << token.text unless stopword?(token.text)
       end
       segments
+    end
+
+    def stopword?(word)
+      $redis.sismember stopword_key, word
     end
 
     def add_stopword(word)
