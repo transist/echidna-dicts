@@ -10,7 +10,9 @@ describe DictsAPI do
 
   context "POST /v1/dicts/segments" do
     before do
-      post "/v1/dicts/segments", text: "我在睡觉"
+      Segment.add_stopword "，"
+      Segment.add_stopword "我"
+      post "/v1/dicts/segments", text: "我喜欢玩，我喜欢睡觉"
     end
 
     it "should return status 200" do
@@ -18,7 +20,7 @@ describe DictsAPI do
     end
 
     it "should get segments as JSON" do
-      expect(MultiJson.load(last_response.body)).to eq({"segments" => ["我","在","睡觉"]})
+      expect(MultiJson.load(last_response.body)).to eq({"segments" => ["喜欢", "玩", "睡觉"]})
     end
   end
 

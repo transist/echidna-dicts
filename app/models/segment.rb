@@ -9,7 +9,7 @@ class Segment
         break if token.nil?
         segments << token.text unless stopword?(token.text)
       end
-      segments
+      segments.uniq.sort
     end
 
     def stopword?(word)

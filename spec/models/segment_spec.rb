@@ -4,12 +4,13 @@ require "spec_helper"
 describe Segment do
   context "segments" do
     it "should get segments" do
-      expect(Segment.get("我在睡觉").map { |segement| segement.force_encoding("UTF-8")}).to eq ["我","在","睡觉"]
+      expect(Segment.get("我喜欢玩，我喜欢睡觉").map { |segement| segement.force_encoding("UTF-8")}).to eq ["喜欢", "我", "玩", "睡觉", "，"]
     end
 
     it "should get segments without stopword" do
-      Segment.add_stopword "在"
-      expect(Segment.get("我在睡觉").map { |segement| segement.force_encoding("UTF-8")}).to eq ["我","睡觉"]
+      Segment.add_stopword "，"
+      Segment.add_stopword "我"
+      expect(Segment.get("我喜欢玩，我喜欢睡觉").map { |segement| segement.force_encoding("UTF-8")}).to eq ["喜欢", "玩", "睡觉"]
     end
   end
 
