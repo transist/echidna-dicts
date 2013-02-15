@@ -62,6 +62,24 @@ $ git submodule update
 $ bundle exec ruby bin/dicts
 ```
 
+## Run tests
+
+```
+$ bundle exec rspec spec
+```
+
+unit tests
+
+```
+$ bundle exec rspec spec/models
+```
+
+functional tests
+
+```
+$ bundle exec rspec spec/apis
+```
+
 ## APIs
 
 start server
