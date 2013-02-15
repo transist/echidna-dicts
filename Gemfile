@@ -1,4 +1,4 @@
-source :rubygems
+source "https://rubygems.org/"
 
 gem 'msworddoc-extractor', require: false
 gem 'rmmseg-cpp', require: 'rmmseg'
