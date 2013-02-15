@@ -7,7 +7,7 @@ require "bundler"
 Bundler.require(:default, ENV["RACK_ENV"].to_sym)
 require "msworddoc-extractor"
 require "dicts"
-require 'config/app'
+require_relative '../config/app'
 
 Dir["app/models/*.rb"].each { |file| require_relative "../#{file}" }
 
