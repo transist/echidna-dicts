@@ -43,4 +43,25 @@ describe DictsAPI do
       expect(synonyms).to be_include "原来"
     end
   end
+
+  context "POST /v1/dicts/hononyms" do
+    before do
+      Word.add("富裕")
+      Word.add("馥郁")
+      Homonym.add_pinyin("富", "fù")
+      Homonym.add_pinyin("裕", "yù")
+      Homonym.add_pinyin("馥", "fù")
+      Homonym.add_pinyin("郁", "yù")
+      post "/v1/dicts/hononyms", text: "富裕"
+    end
+
+    it "should return status 200" do
+      expect(last_response.status).to eq 200
+    end
+
+    it "should get hononyms as JSON" do
+      hononyms = MultiJson.load(last_response.body)["hononyms"]
+      expect(hononyms).to be_include "馥郁"
+    end
+  end
 end

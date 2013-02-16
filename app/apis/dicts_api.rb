@@ -3,10 +3,10 @@ class DictsAPI < Grape::API
   version "v1", using: :path
   format :json
 
-  params do
-    requires :text, type: String
-  end
   resource 'dicts' do
+    params do
+      requires :text, type: String
+    end
     post 'segments' do
       segments = Segment.get(params[:text])
       status 200
@@ -20,6 +20,15 @@ class DictsAPI < Grape::API
       synonyms = Synonym.get(params[:text])
       status 200
       {synonyms: synonyms}
+    end
+
+    params do
+      requires :text, type: String
+    end
+    post 'homonyms' do
+      hononyms = Homonym.get(params[:text])
+      status 200
+      {hononyms: hononyms}
     end
   end
 end
