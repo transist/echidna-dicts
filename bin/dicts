@@ -15,6 +15,7 @@ EM.synchrony do
   #Dicts::Parser::ModernChineseDictParser.new.parse
   Dicts::Parser::SynonymsDictParser.new.parse
   Dicts::Parser::StopwordsParser.new.parse
+  Dicts::Parser::ChinesePinyinParser.new.parse
   EM.stop
 end
 puts "parse dicts successfuly"
