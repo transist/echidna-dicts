@@ -2,7 +2,8 @@
 class Homonym
   class <<self
     def get(word)
-      word.each_char.inject([]) { |result, char| result = result.multiple(chars(char)); result }
+      homonyms = word.each_char.inject([]) { |result, char| result = result.multiple(chars(char)); result }
+      homonyms.select { |word| Word.exist?(word) }
     end
 
     def add_pinyin(char, pinyin)
