@@ -12,12 +12,13 @@ class Segment
       segments.uniq.sort
     end
 
-    def stopword?(word)
-      $redis.sismember stopword_key, word
-    end
-
     def add_stopword(word)
       $redis.sadd stopword_key, word
+    end
+
+    private
+    def stopword?(word)
+      $redis.sismember stopword_key, word
     end
 
     def stopword_key

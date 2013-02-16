@@ -10,6 +10,7 @@ class Synonym
       $redis.sadd key(word2), word1
     end
 
+    private
     def key(text)
       "synonym/#{text}"
     end

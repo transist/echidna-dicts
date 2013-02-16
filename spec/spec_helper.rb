@@ -4,7 +4,7 @@ ENV["RACK_ENV"] = "test"
 require "bundler"
 Bundler.require(:default, ENV["RACK_ENV"].to_sym)
 
-%w(app/models/*.rb app/apis/*.rb).each do |dir|
+%w(config/initializers/*.rb app/models/*.rb app/apis/*.rb).each do |dir|
   Dir[dir].each { |file| require_relative "../#{file}" }
 end
 
