@@ -8,6 +8,7 @@ class Word
       $redis.sismember key, word
     end
 
+    private
     def key
       "words"
     end

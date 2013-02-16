@@ -29,6 +29,7 @@ describe Homonym do
       Homonym.add_pinyin("狱", "yù")
       Homonym.add_pinyin("负", "fù")
       Homonym.add_pinyin("隅", "yù")
+      Homonym.prepare_pinyin_for_words
     end
 
     it "should be homonyms (富裕 and 馥郁)" do

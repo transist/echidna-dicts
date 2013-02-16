@@ -44,7 +44,7 @@ describe DictsAPI do
     end
   end
 
-  context "POST /v1/dicts/hononyms" do
+  context "POST /v1/dicts/homonyms" do
     before do
       Word.add("富裕")
       Word.add("馥郁")
@@ -52,7 +52,8 @@ describe DictsAPI do
       Homonym.add_pinyin("裕", "yù")
       Homonym.add_pinyin("馥", "fù")
       Homonym.add_pinyin("郁", "yù")
-      post "/v1/dicts/hononyms", text: "富裕"
+      Homonym.prepare_pinyin_for_words
+      post "/v1/dicts/homonyms", text: "富裕"
     end
 
     it "should return status 200" do

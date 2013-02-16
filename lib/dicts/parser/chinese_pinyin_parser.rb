@@ -12,6 +12,7 @@ module Dicts
             Homonym.add_pinyin(char, pinyin)
           end
         end
+        Homonym.prepare_pinyin_for_words
       end
     end
   end
