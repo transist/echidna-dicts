@@ -12,10 +12,11 @@ require_relative '../config/app'
 Dir["app/models/*.rb"].each { |file| require_relative "../#{file}" }
 
 EM.synchrony do
-  #Dicts::Parser::ModernChineseDictParser.new.parse
-  Dicts::Parser::SynonymsDictParser.new.parse
-  Dicts::Parser::StopwordsParser.new.parse
   Dicts::Parser::ChinesePinyinParser.new.parse
+  #Dicts::Parser::ModernChineseDictParser.new.parse
+  Dicts::Parser::StopwordsParser.new.parse
+  Dicts::Parser::SynonymsDictParser.new.parse
+  Dicts::Parser::WordsDictParser.new.parse
   EM.stop
 end
 puts "parse dicts successfuly"
