@@ -101,7 +101,15 @@ $ curl -d '{"text":"我在睡觉，不要打扰我"}' http://localhost:9000/v1/d
 ### Get synonyms
 
 ```
-curl -d '{"text":"本来"}' http://localhost:9000/v1/dicts/synonyms
+$ curl -d '{"text":"本来"}' http://localhost:9000/v1/dicts/synonyms
 
 {"synonyms":["原本","原先","原来"]}
+```
+
+### Get homonyms
+
+```
+$ curl -d '{"text":"富裕"}' http://localhost:9000/v1/dicts/homonyms
+
+{"hononyms":["馥郁"]}
 ```
