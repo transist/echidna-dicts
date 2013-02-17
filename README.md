@@ -93,7 +93,7 @@ $ ruby app.rb -sv
 ### Get segments
 
 ```
-$ curl -d '{"text":"我在睡觉，不要打扰我"}' http://localhost:9000/v1/dicts/segments
+$ curl -d '{"text":"我在睡觉，不要打扰我"}' http://localhost:9000/dicts/segments
 
 {"segments":["打扰","睡觉"]}
 ```
@@ -101,7 +101,7 @@ $ curl -d '{"text":"我在睡觉，不要打扰我"}' http://localhost:9000/v1/d
 ### Get synonyms
 
 ```
-$ curl -d '{"text":"本来"}' http://localhost:9000/v1/dicts/synonyms
+$ curl -d '{"text":"本来"}' http://localhost:9000/dicts/synonyms
 
 {"synonyms":["原本","原先","原来"]}
 ```
@@ -109,7 +109,7 @@ $ curl -d '{"text":"本来"}' http://localhost:9000/v1/dicts/synonyms
 ### Get homonyms
 
 ```
-$ curl -d '{"text":"富裕"}' http://localhost:9000/v1/dicts/homonyms
+$ curl -d '{"text":"富裕"}' http://localhost:9000/dicts/homonyms
 
 {"hononyms":["馥郁"]}
 ```

@@ -1,6 +1,5 @@
 # coding: utf-8
 class DictsAPI < Grape::API
-  version "v1", using: :path
   format :json
 
   resource 'dicts' do

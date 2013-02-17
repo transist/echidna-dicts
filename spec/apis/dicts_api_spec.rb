@@ -8,11 +8,11 @@ describe DictsAPI do
     DictsAPI
   end
 
-  context "POST /v1/dicts/segments" do
+  context "POST /dicts/segments" do
     before do
       Segment.add_stopword "，"
       Segment.add_stopword "我"
-      post "/v1/dicts/segments", text: "我喜欢玩，我喜欢睡觉"
+      post "/dicts/segments", text: "我喜欢玩，我喜欢睡觉"
     end
 
     it "should return status 200" do
@@ -24,12 +24,12 @@ describe DictsAPI do
     end
   end
 
-  context "POST /v1/dicts/synonyms" do
+  context "POST /dicts/synonyms" do
     before do
       Synonym.set("本来", "原本")
       Synonym.set("原先", "本来")
       Synonym.set("本来", "原来")
-      post "/v1/dicts/synonyms", text: "本来"
+      post "/dicts/synonyms", text: "本来"
     end
 
     it "should return status 200" do
@@ -44,7 +44,7 @@ describe DictsAPI do
     end
   end
 
-  context "POST /v1/dicts/homonyms" do
+  context "POST /dicts/homonyms" do
     before do
       Word.add("富裕")
       Word.add("馥郁")
@@ -53,7 +53,7 @@ describe DictsAPI do
       Homonym.add_pinyin("馥", "fù")
       Homonym.add_pinyin("郁", "yù")
       Homonym.prepare_pinyin_for_words
-      post "/v1/dicts/homonyms", text: "富裕"
+      post "/dicts/homonyms", text: "富裕"
     end
 
     it "should return status 200" do
