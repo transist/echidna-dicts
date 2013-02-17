@@ -84,10 +84,16 @@ $ bundle exec rspec spec/apis
 
 ## APIs
 
-start server
+start server for development, port is 3000
 
 ```
 $ ruby app.rb -sv
+```
+
+start server for production, port is 9200, run as a daemon
+
+```
+$ RACK_ENV=production ruby app.rb -e production -d
 ```
 
 ### Get segments
