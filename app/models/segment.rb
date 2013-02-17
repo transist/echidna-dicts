@@ -1,15 +1,23 @@
 # coding: utf-8
 class Segment
   class <<self
-    def get(text)
+    def get(text, options={})
       algorithm = RMMSeg::Algorithm.new(text)
       segments = []
       loop do
         token = algorithm.next_token
         break if token.nil?
-        segments << token.text unless stopword?(token.text)
+        if options[:optimize]
+          segments << token.text unless stopword?(token.text)
+        else
+          segments << token.text
+        end
       end
-      segments.uniq.sort
+      if options[:optimize]
+        segments.uniq.sort
+      else
+        segments
+      end
     end
 
     def add_stopword(word)

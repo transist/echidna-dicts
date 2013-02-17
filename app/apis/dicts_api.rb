@@ -7,7 +7,7 @@ class DictsAPI < Grape::API
       requires :text, type: String
     end
     post 'segments' do
-      segments = Segment.get(params[:text])
+      segments = Segment.get(params[:text], optimize: params.optimize)
       status 200
       {segments: segments}
     end

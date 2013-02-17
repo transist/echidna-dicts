@@ -95,6 +95,12 @@ $ ruby app.rb -sv
 ```
 $ curl -d '{"text":"我在睡觉，不要打扰我"}' http://localhost:9000/dicts/segments
 
+{"segments":["我","在","睡觉","，","不要","打扰","我"]}
+```
+
+```
+$ curl -d '{"text":"我在睡觉，不要打扰我","optimize":true}' http://localhost:9000/dicts/segments
+
 {"segments":["打扰","睡觉"]}
 ```
 

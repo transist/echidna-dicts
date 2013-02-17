@@ -9,18 +9,36 @@ describe DictsAPI do
   end
 
   context "POST /dicts/segments" do
-    before do
-      Segment.add_stopword "，"
-      Segment.add_stopword "我"
-      post "/dicts/segments", text: "我喜欢玩，我喜欢睡觉"
+    context "without optimize param" do
+      before do
+        Segment.add_stopword "，"
+        Segment.add_stopword "我"
+        post "/dicts/segments", text: "我喜欢玩，我喜欢睡觉"
+      end
+
+      it "should return status 200" do
+        expect(last_response.status).to eq 200
+      end
+
+      it "should get segments as JSON" do
+        expect(MultiJson.load(last_response.body)).to eq({"segments" => ["我", "喜欢", "玩", "，", "我", "喜欢", "睡觉"]})
+      end
     end
 
-    it "should return status 200" do
-      expect(last_response.status).to eq 200
-    end
+    context "with optimize param" do
+      before do
+        Segment.add_stopword "，"
+        Segment.add_stopword "我"
+        post "/dicts/segments", text: "我喜欢玩，我喜欢睡觉", optimize: true
+      end
 
-    it "should get segments as JSON" do
-      expect(MultiJson.load(last_response.body)).to eq({"segments" => ["喜欢", "玩", "睡觉"]})
+      it "should return status 200" do
+        expect(last_response.status).to eq 200
+      end
+
+      it "should get segments as JSON" do
+        expect(MultiJson.load(last_response.body)).to eq({"segments" => ["喜欢", "玩", "睡觉"]})
+      end
     end
   end
 
