@@ -6,7 +6,7 @@ class DictsAPI < Grape::API
     params do
       requires :text, type: String
     end
-    post 'segments' do
+    get 'segments' do
       segments = Segment.get(params[:text], optimize: params.optimize)
       status 200
       {segments: segments}
@@ -15,7 +15,7 @@ class DictsAPI < Grape::API
     params do
       requires :text, type: String
     end
-    post 'synonyms' do
+    get 'synonyms' do
       synonyms = Synonym.get(params[:text])
       status 200
       {synonyms: synonyms}
@@ -24,7 +24,7 @@ class DictsAPI < Grape::API
     params do
       requires :text, type: String
     end
-    post 'homonyms' do
+    get 'homonyms' do
       hononyms = Homonym.get(params[:text])
       status 200
       {hononyms: hononyms}

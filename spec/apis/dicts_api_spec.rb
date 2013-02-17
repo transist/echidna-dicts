@@ -8,12 +8,12 @@ describe DictsAPI do
     DictsAPI
   end
 
-  context "POST /dicts/segments" do
+  context "GET /dicts/segments" do
     context "without optimize param" do
       before do
         Segment.add_stopword "，"
         Segment.add_stopword "我"
-        post "/dicts/segments", text: "我喜欢玩，我喜欢睡觉"
+        get "/dicts/segments?text=#{URI.encode('我喜欢玩，我喜欢睡觉')}"
       end
 
       it "should return status 200" do
@@ -29,7 +29,7 @@ describe DictsAPI do
       before do
         Segment.add_stopword "，"
         Segment.add_stopword "我"
-        post "/dicts/segments", text: "我喜欢玩，我喜欢睡觉", optimize: true
+        get "/dicts/segments?text=#{URI.encode('我喜欢玩，我喜欢睡觉')}&optimize=true"
       end
 
       it "should return status 200" do
@@ -42,12 +42,12 @@ describe DictsAPI do
     end
   end
 
-  context "POST /dicts/synonyms" do
+  context "GET /dicts/synonyms" do
     before do
       Synonym.set("本来", "原本")
       Synonym.set("原先", "本来")
       Synonym.set("本来", "原来")
-      post "/dicts/synonyms", text: "本来"
+      get "/dicts/synonyms?text=#{URI.encode('本来')}"
     end
 
     it "should return status 200" do
@@ -62,7 +62,7 @@ describe DictsAPI do
     end
   end
 
-  context "POST /dicts/homonyms" do
+  context "GET /dicts/homonyms" do
     before do
       Word.add("富裕")
       Word.add("馥郁")
@@ -71,7 +71,7 @@ describe DictsAPI do
       Homonym.add_pinyin("馥", "fù")
       Homonym.add_pinyin("郁", "yù")
       Homonym.prepare_pinyin_for_words
-      post "/dicts/homonyms", text: "富裕"
+      get "/dicts/homonyms?text=#{URI.encode('富裕')}"
     end
 
     it "should return status 200" do
