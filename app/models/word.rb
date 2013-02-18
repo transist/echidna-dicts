@@ -8,6 +8,10 @@ class Word
       $redis.sismember key, word
     end
 
+    def flush
+      $redis.del key
+    end
+
     private
     def key
       "words"

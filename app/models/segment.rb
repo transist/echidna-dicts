@@ -24,6 +24,10 @@ class Segment
       $redis.sadd stopword_key, word
     end
 
+    def flush
+      $redis.del stopword_key
+    end
+
     private
     def stopword?(word)
       $redis.sismember stopword_key, word

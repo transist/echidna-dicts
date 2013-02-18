@@ -20,6 +20,18 @@ class Homonym
       end
     end
 
+    def flush
+      $redis.keys("c2py/*").each do |key|
+        $redis.del key
+      end
+      $redis.keys("py2c/*").each do |key|
+        $redis.del key
+      end
+      $redis.keys("py2w/*").each do |key|
+        $redis.del key
+      end
+    end
+
     private
     def pinyins(char)
       $redis.smembers(char_to_pinyin_key(char))

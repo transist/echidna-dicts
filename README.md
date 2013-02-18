@@ -63,6 +63,11 @@ $ git submodule init
 $ git submodule update
 $ bundle exec ruby bin/dicts
 ```
+flush old dicts and parse again
+
+```
+$ FORCE_FLUSH=true bundle exec ruby bin/dicts
+```
 
 ## Run tests
 

@@ -10,6 +10,12 @@ class Synonym
       $redis.sadd key(word2), word1
     end
 
+    def flush
+      $redis.keys("synonym/*").each do |key|
+        $redis.del key
+      end
+    end
+
     private
     def key(text)
       "synonym/#{text}"

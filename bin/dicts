@@ -13,6 +13,12 @@ require_relative '../config/initializers/array_hack.rb'
 Dir["app/models/*.rb"].each { |file| require_relative "../#{file}" }
 
 EM.synchrony do
+  if ENV["FORCE_FLUSH"]
+    Homonym.flush
+    Segment.flush
+    Synonym.flush
+    Word.flush
+  end
   #Dicts::Parser::ModernChineseDictParser.new.parse
   Dicts::Parser::StopwordsParser.new.parse
   Dicts::Parser::SynonymsDictParser.new.parse
