@@ -47,10 +47,12 @@ $ gem install bundler
 $ rvm gemset use default
 ```
 
-install app dependencies
+copy .rvmrc.example to .rvmrc and customize it to conform your ruby setup if necessary
+then install app dependencies
 
 ```
 $ cd <app path>
+$ cp .rvmrc.example .rvmrc
 $ bundle install
 ```
 
