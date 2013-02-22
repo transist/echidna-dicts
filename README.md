@@ -61,8 +61,7 @@ $ bundle install
 synonym dicts and stopwords
 
 ```
-$ git submodule init
-$ git submodule update
+$ git submodule update --init
 $ bundle exec ruby bin/dicts
 ```
 flush old dicts and parse again
