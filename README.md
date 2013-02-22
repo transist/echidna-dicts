@@ -6,128 +6,128 @@ dicts system for echidna.
 
 install redis-server on debian
 
-```
-$ sudo apt-get install redis-server
+```bash
+sudo apt-get install redis-server
 ```
 
 or mac
 
-```
-$ brew install redis
+```bash
+brew install redis
 ```
 
 install rvm for ruby
 
-```
-$ curl -L https://get.rvm.io | bash -s stable --ruby
-$ source ~/.rvm/scripts/rvm
-$ echo 'rvm_trust_rvmrcs_flag=1' > ~/.rvmrc
+```bash
+curl -L https://get.rvm.io | bash -s stable --ruby
+source ~/.rvm/scripts/rvm
+echo 'rvm_trust_rvmrcs_flag=1' > ~/.rvmrc
 ```
 
 install dependencies for ruby
 
-```
-$ rvm requirements
+```bash
+rvm requirements
 ```
 
 then followed the notes
 
 install ruby
 
-```
-$ rvm install 1.9.3-p327-falcon --patch falcon
-$ rvm use 1.9.3-p327-falcon --default
+```bash
+rvm install 1.9.3-p327-falcon --patch falcon
+rvm use 1.9.3-p327-falcon --default
 ```
 
 install bundler (ruby gems management)
 
-```
-$ rvm gemset use global
-$ gem install bundler
-$ rvm gemset use default
+```bash
+rvm gemset use global
+gem install bundler
+rvm gemset use default
 ```
 
 copy .rvmrc.example to .rvmrc and customize it to conform your ruby setup if necessary
 then install app dependencies
 
-```
-$ cd <app path>
-$ cp .rvmrc.example .rvmrc
-$ bundle install
+```bash
+cd <app path>
+cp .rvmrc.example .rvmrc
+bundle install
 ```
 
 ## Parse dicts
 
 synonym dicts and stopwords
 
-```
-$ git submodule update --init
-$ bin/dicts
+```bash
+git submodule update --init
+bin/dicts
 ```
 flush old dicts and parse again
 
-```
-$ FORCE_FLUSH=true bin/dicts
+```bash
+FORCE_FLUSH=true bin/dicts
 ```
 
 ## Run tests
 
-```
-$ bundle exec rspec spec
+```bash
+bundle exec rspec spec
 ```
 
 unit tests
 
-```
-$ bundle exec rspec spec/models
+```bash
+bundle exec rspec spec/models
 ```
 
 functional tests
 
-```
-$ bundle exec rspec spec/apis
+```bash
+bundle exec rspec spec/apis
 ```
 
 ## APIs
 
 start server for development, port is 3000, bind 0.0.0.0
 
-```
-$ ruby app.rb -sv
+```bash
+ruby app.rb -sv
 ```
 
 start server for production, port is 9200, bind 127.0.0.1, run as a daemon
 
-```
-$ RACK_ENV=production ruby app.rb -e production -p 9200 -a 127.0.0.1 -d
+```bash
+RACK_ENV=production ruby app.rb -e production -p 9200 -a 127.0.0.1 -d
 ```
 
 ### Get segments
 
-```
-$ curl -w '\n' http://localhost:9000/dicts/segments?text=我在睡觉，不要打扰我
+```bash
+curl -w '\n' "http://localhost:9000/dicts/segments?text=我在睡觉，不要打扰我"
 
-{"segments":["我","在","睡觉","，","不要","打扰","我"]}
+# => {"segments":["我","在","睡觉","，","不要","打扰","我"]}
 ```
 
-```
-$ curl -w '\n' http://localhost:9000/dicts/segments?text=我在睡觉，不要打扰我&optimize=true
+```bash
+curl -w '\n' "http://localhost:9000/dicts/segments?text=我在睡觉，不要打扰我&optimize=true"
 
-{"segments":["打扰","睡觉"]}
+# => {"segments":["打扰","睡觉"]}
 ```
 
 ### Get synonyms
 
-```
-$ curl -w '\n' http://localhost:9000/dicts/synonyms?text=本来
+```bash
+curl -w '\n' "http://localhost:9000/dicts/synonyms?text=本来"
 
-{"synonyms":["原本","原先","原来"]}
+# => {"synonyms":["原本","原先","原来"]}
 ```
 
 ### Get homonyms
 
-```
-$ curl -w '\n' http://localhost:9000/dicts/homonyms?text=富裕
+```bash
+curl -w '\n' "http://localhost:9000/dicts/homonyms?text=富裕"
 
-{"hononyms":["馥郁"]}
+# => {"hononyms":["馥郁"]}
 ```
