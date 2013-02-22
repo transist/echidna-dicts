@@ -62,12 +62,12 @@ synonym dicts and stopwords
 
 ```
 $ git submodule update --init
-$ bundle exec ruby bin/dicts
+$ bin/dicts
 ```
 flush old dicts and parse again
 
 ```
-$ FORCE_FLUSH=true bundle exec ruby bin/dicts
+$ FORCE_FLUSH=true bin/dicts
 ```
 
 ## Run tests

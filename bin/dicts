@@ -19,11 +19,15 @@ EM.synchrony do
     Synonym.flush
     Word.flush
   end
-  #Dicts::Parser::ModernChineseDictParser.new.parse
+  # Dicts::Parser::ModernChineseDictParser.new.parse
+  puts 'Parsing stopwords...'
   Dicts::Parser::StopwordsParser.new.parse
+  puts 'Parsing synonyms...'
   Dicts::Parser::SynonymsDictParser.new.parse
+  puts 'Parsing words...'
   Dicts::Parser::WordsDictParser.new.parse
+  puts 'Parsing Chinese Pinyin...'
   Dicts::Parser::ChinesePinyinParser.new.parse
   EM.stop
 end
-puts "parse dicts successfuly"
+puts 'Dicts parsed successfuly'
