@@ -4,6 +4,7 @@ gem 'msworddoc-extractor', require: false
 gem 'rmmseg-cpp', require: 'rmmseg'
 gem 'hiredis'
 gem 'redis'
+gem 'redis-namespace'
 gem 'em-synchrony', require: 'em-synchrony'
 gem 'yajl-ruby', require: 'yajl'
 gem 'goliath', require: false

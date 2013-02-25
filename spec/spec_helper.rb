@@ -1,11 +1,22 @@
 # coding: utf-8
-ENV["RACK_ENV"] = "test"
+dicts_env = ENV['ECHIDNA_DICTS_ENV'] || "test"
+redis_host = ENV['ECHIDNA_REDIS_HOST'] || "127.0.0.1"
+redis_port = ENV['ECHIDNA_REDIS_PORT'] || "6379"
+redis_namespace = ENV['ECHIDNA_REDIS_NAMESPACE'] || "e:t"
 
 require "bundler"
-Bundler.require(:default, ENV["RACK_ENV"].to_sym)
+Bundler.require(:default, dicts_env)
 
 %w(config/initializers/*.rb app/models/*.rb app/apis/*.rb).each do |dir|
   Dir[dir].each { |file| require_relative "../#{file}" }
+end
+
+$redis = Redis::Namespace.new(redis_namespace, redis: Redis.new(host: redis_host, port: redis_port, driver: "hiredis"))
+
+def flush_redis
+  $redis.keys("*").each do |key|
+    $redis.del key
+  end
 end
 
 module RSpec::Core
@@ -35,6 +46,6 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
 
   config.after do
-    $redis.flushdb
+    flush_redis
   end
 end
