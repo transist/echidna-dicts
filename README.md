@@ -131,3 +131,11 @@ curl -w '\n' "http://localhost:9000/dicts/homonyms?text=富裕"
 
 # => {"hononyms":["馥郁"]}
 ```
+
+### Get hypernyms
+
+```
+$ curl -w '\n' http://localhost:9000/dicts/hypernyms?text=许愿
+
+{"hypernyms":["许诺","作曲家","网络作家","作家","河南"]}
+```

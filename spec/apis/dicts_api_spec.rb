@@ -83,4 +83,22 @@ describe DictsAPI do
       expect(hononyms).to be_include "馥郁"
     end
   end
+
+  context "GET /dicts/hypernyms" do
+    before do
+      Hypernym.set("凯恩斯主义", "宏观经济学")
+      Hypernym.set("凯恩斯主义", "经济自由主义")
+      get "/dicts/hypernyms?text=#{URI.encode('凯恩斯主义')}"
+    end
+
+    it "should return status 200" do
+      expect(last_response.status).to eq 200
+    end
+
+    it "should get hypernyms as JSON" do
+      hypernyms = MultiJson.load(last_response.body)["hypernyms"]
+      expect(hypernyms).to be_include "宏观经济学"
+      expect(hypernyms).to be_include "经济自由主义"
+    end
+  end
 end

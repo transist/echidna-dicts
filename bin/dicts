@@ -18,6 +18,7 @@ EM.synchrony do
     Segment.flush
     Synonym.flush
     Word.flush
+    Hypernym.flush
   end
   # Dicts::Parser::ModernChineseDictParser.new.parse
   puts 'Parsing stopwords...'
@@ -28,6 +29,7 @@ EM.synchrony do
   Dicts::Parser::WordsDictParser.new.parse
   puts 'Parsing Chinese Pinyin...'
   Dicts::Parser::ChinesePinyinParser.new.parse
+  Dicts::Parser::HypernymsDictParser.new.parse
   EM.stop
 end
 puts 'Dicts parsed successfuly'

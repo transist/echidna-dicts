@@ -29,5 +29,14 @@ class DictsAPI < Grape::API
       status 200
       {hononyms: hononyms}
     end
+
+    params do
+      requires :text, type: String
+    end
+    get 'hypernyms' do
+      hypernyms = Hypernym.get(params[:text])
+      status 200
+      {hypernyms: hypernyms}
+    end
   end
 end
