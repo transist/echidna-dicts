@@ -7,7 +7,7 @@ $redis_host = ENV['ECHIDNA_REDIS_HOST'] || "127.0.0.1"
 $redis_port = ENV['ECHIDNA_REDIS_PORT'] || "6379"
 $redis_namespace = ENV['ECHIDNA_REDIS_NAMESPACE'] || "e:d"
 
-ARGV = ["-e", dicts_env, "-a", dicts_ip, "-p", dicts_port]
+ARGV.replace ["-e", dicts_env, "-a", dicts_ip, "-p", dicts_port]
 ARGV << "-d" if dicts_daemon
 
 require "bundler"
