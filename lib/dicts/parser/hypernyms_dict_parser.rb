@@ -2,7 +2,7 @@
 module Dicts
   module Parser
     class HypernymsDictParser
-      DICT_FILENAME = 'dicts/hypernyms.dict'
+      DICT_FILENAME = 'dicts/hypernyms.dic'
 
       def parse
         File.open(DICT_FILENAME, 'r') do |file|
