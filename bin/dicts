@@ -9,7 +9,7 @@ $redis_namespace = ENV['ECHIDNA_REDIS_NAMESPACE'] || "e:d"
 $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
 
 require "bundler"
-Bundler.require(:default, dicts.to_sym)
+Bundler.require(:default, dicts_env.to_sym)
 require "msworddoc-extractor"
 require "dicts"
 require_relative '../config/app'
