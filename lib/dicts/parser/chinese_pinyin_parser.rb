@@ -6,7 +6,7 @@ module Dicts
 
       def parse
         File.open(DICT_FILENAME, 'r') do |file|
-          file.lines.each do |line|
+          file.each_line do |line|
             char_hex, pinyin = line.split(' ')
             char = [char_hex.hex].pack("U")
             Homonym.add_pinyin(char, pinyin)

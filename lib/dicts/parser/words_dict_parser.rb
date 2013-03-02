@@ -5,7 +5,7 @@ module Dicts
 
       def parse
         File.open(DICT_FILENAME, 'r') do |file|
-          file.lines.each do |line|
+          file.each_line do |line|
             Word.add(line.split(' ').last)
           end
         end

@@ -10,7 +10,7 @@ module Dicts
           last_level = 0
           last_value = ''
 
-          file.lines.each do |line|
+          file.each_line do |line|
             level = detect_level(line.chomp)
             if last_level + 1 == level
               hypernyms.push last_value

@@ -7,7 +7,7 @@ module Dicts
 
       def parse
         File.open(DICT_FILENAME, 'r') do |file|
-          file.lines.each do |line|
+          file.each_line do |line|
             word1, word2 = line.strip.split(',')
             #word1, word2 = line.strip.split('—')
             Synonym.set(word1, word2)
