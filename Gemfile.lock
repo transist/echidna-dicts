@@ -83,6 +83,7 @@ DEPENDENCIES
   grape
   hiredis
   msworddoc-extractor
+  multi_json
   rack-test
   redis
   redis-namespace

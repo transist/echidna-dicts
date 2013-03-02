@@ -7,6 +7,7 @@ gem 'redis'
 gem 'redis-namespace'
 gem 'em-synchrony', require: 'em-synchrony'
 gem 'yajl-ruby', require: 'yajl'
+gem 'multi_json'
 gem 'goliath', require: false
 gem 'grape'
 
