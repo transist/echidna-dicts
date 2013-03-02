@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+# coding: utf-8
 dicts_env = ENV['ECHIDNA_DICTS_ENV'] || "development"
 dicts_ip = ENV['ECHIDNA_DICTS_IP'] || "0.0.0.0"
 dicts_port = ENV['ECHIDNA_DICTS_PORT'] || '9000'

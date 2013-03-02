@@ -8,7 +8,6 @@ class DictsAPI < Grape::API
     end
     get 'segments' do
       segments = Segment.get(params[:text], optimize: params.optimize)
-      status 200
       {segments: segments}
     end
 
@@ -17,7 +16,6 @@ class DictsAPI < Grape::API
     end
     get 'synonyms' do
       synonyms = Synonym.get(params[:text])
-      status 200
       {synonyms: synonyms}
     end
 
@@ -26,7 +24,6 @@ class DictsAPI < Grape::API
     end
     get 'homonyms' do
       hononyms = Homonym.get(params[:text])
-      status 200
       {hononyms: hononyms}
     end
 
@@ -35,7 +32,6 @@ class DictsAPI < Grape::API
     end
     get 'hypernyms' do
       hypernyms = Hypernym.get(params[:text])
-      status 200
       {hypernyms: hypernyms}
     end
   end

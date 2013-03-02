@@ -26,12 +26,13 @@ synonym dicts and stopwords
 
 ```bash
 git submodule update --init
-ECHIDNA_DICTS_ENV=development ECHIDNA_REDIS_HOST=127.0.0.1 ECHIDNA_REDIS_PORT=6379 ECHIDNA_REDIS_NAMESPACE="e:d" ruby bin/dicts
+ECHIDNA_DICTS_ENV=development ECHIDNA_REDIS_HOST=127.0.0.1 ECHIDNA_REDIS_PORT=6379 ECHIDNA_REDIS_NAMESPACE="e:d" ruby bin/init_dicts.rb
 ```
+
 flush old dicts and parse again
 
 ```bash
-ECHIDNA_DICTS_ENV=development ECHIDNA_REDIS_HOST=127.0.0.1 ECHIDNA_REDIS_PORT=6379 ECHIDNA_REDIS_NAMESPACE="e:d" FORCE_FLUSH=true bin/dicts
+ECHIDNA_DICTS_ENV=development ECHIDNA_REDIS_HOST=127.0.0.1 ECHIDNA_REDIS_PORT=6379 ECHIDNA_REDIS_NAMESPACE="e:d" FORCE_FLUSH=true ruby bin/init_dicts.rb
 ```
 
 ## Run tests
