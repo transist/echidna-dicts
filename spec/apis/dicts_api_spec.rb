@@ -11,8 +11,8 @@ describe DictsAPI do
   context "GET /dicts/segments" do
     context "without optimize param" do
       before do
-        Segment.add_stopword "，"
-        Segment.add_stopword "我"
+        Stopword.add "，"
+        Stopword.add "我"
         get "/dicts/segments?text=#{URI.encode('我喜欢玩，我喜欢睡觉')}"
       end
 
@@ -27,8 +27,8 @@ describe DictsAPI do
 
     context "with optimize param" do
       before do
-        Segment.add_stopword "，"
-        Segment.add_stopword "我"
+        Stopword.add "，"
+        Stopword.add "我"
         get "/dicts/segments?text=#{URI.encode('我喜欢玩，我喜欢睡觉')}&optimize=true"
       end
 

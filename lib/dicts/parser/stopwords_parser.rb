@@ -7,7 +7,7 @@ module Dicts
       def parse
         File.open(DICT_FILENAME, 'r') do |file|
           file.lines.each do |line|
-            Segment.add_stopword(line.strip)
+            Stopword.add(line.strip)
           end
         end
       end
