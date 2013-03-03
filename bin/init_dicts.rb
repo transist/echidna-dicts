@@ -1,8 +1,6 @@
 # coding: utf-8
-dicts_env = ENV['ECHIDNA_DICTS_ENV'] || "development"
-
 require "bundler"
-Bundler.require(:default, dicts_env.to_sym)
+Bundler.require(:default, ENV['ECHIDNA_ENV'] || "development")
 
 require "msworddoc-extractor"
 
