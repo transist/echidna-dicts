@@ -26,13 +26,13 @@ synonym dicts and stopwords
 
 ```bash
 git submodule update --init
-ECHIDNA_DICTS_ENV=development ECHIDNA_REDIS_HOST=127.0.0.1 ECHIDNA_REDIS_PORT=6379 ECHIDNA_REDIS_NAMESPACE="e:d" ruby bin/init_dicts.rb
+ECHIDNA_ENV=development ECHIDNA_REDIS_HOST=127.0.0.1 ECHIDNA_REDIS_PORT=6379 ruby bin/init_dicts.rb
 ```
 
 flush old dicts and parse again
 
 ```bash
-ECHIDNA_DICTS_ENV=development ECHIDNA_REDIS_HOST=127.0.0.1 ECHIDNA_REDIS_PORT=6379 ECHIDNA_REDIS_NAMESPACE="e:d" FORCE_FLUSH=true ruby bin/init_dicts.rb
+ECHIDNA_ENV=development ECHIDNA_REDIS_HOST=127.0.0.1 ECHIDNA_REDIS_PORT=6379 FORCE_FLUSH=true ruby bin/init_dicts.rb
 ```
 
 ## Run tests
@@ -58,7 +58,7 @@ bundle exec rspec spec/apis
 start server for development, port is 3000, bind 0.0.0.0
 
 ```bash
-ECHIDNA_DICTS_ENV=development ECHIDNA_DICTS_IP=0.0.0.0 ECHIDNA_DICTS_PORT=9000 ECHIDNA_DICTS_DAEMON=true ECHIDNA_REDIS_HOST=127.0.0.1 ECHIDNA_REDIS_PORT=6379 ECHIDNA_REDIS_NAMESPACE="e:d" ruby app.rb
+ECHIDNA_ENV=development ECHIDNA_DICTS_IP=0.0.0.0 ECHIDNA_DICTS_PORT=9000 ECHIDNA_DICTS_DAEMON=true ECHIDNA_REDIS_HOST=127.0.0.1 ECHIDNA_REDIS_PORT=6379 ruby app.rb
 ```
 
 ### Get segments
