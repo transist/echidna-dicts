@@ -3,6 +3,7 @@ require "bundler"
 Bundler.require(:default, ENV['ECHIDNA_ENV'] || "development")
 
 require "msworddoc-extractor"
+Dir[$app_root.join("lib/dicts/parser/*.rb")].each { |file| require_relative file }
 
 if ENV["FORCE_FLUSH"]
   Homonym.flush
