@@ -8,7 +8,7 @@ gem 'multi_json'
 gem 'goliath', require: false
 gem 'grape'
 
-gem 'echidna-ruby', git: 'git@github.com:transist/echidna-ruby.git', require: 'echidna/all'
+gem 'echidna-env', path: 'echidna-env', require: 'echidna/all'
 
 group :test do
   gem 'rspec'

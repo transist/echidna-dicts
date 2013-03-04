@@ -1,8 +1,7 @@
-GIT
-  remote: git@github.com:transist/echidna-ruby.git
-  revision: 3e9386c17723edc5c7256b811aef189260f83262
+PATH
+  remote: echidna-env
   specs:
-    echidna-ruby (0.0.1)
+    echidna-env (0.0.1)
       hiredis
       redis
       redis-namespace
@@ -87,7 +86,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  echidna-ruby!
+  echidna-env!
   em-synchrony
   goliath
   grape
