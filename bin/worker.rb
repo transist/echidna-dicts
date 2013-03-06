@@ -8,6 +8,7 @@ $logger.notice("load dictionaries")
 # redis-cli lpush e:d:dicts/messages '{"type":"segment","body":{"text":"我是中国人"}}'
 # redis-cli lpush e:d:dicts/messages '{"type":"stopword","body":{"group_id":"group-1","user_id":"user-1","user_type":"tencent"}}'
 while true
+  $redis.incr "dicts/messages/incoming"
   raw_message = $redis.blpop "dicts/messages", 0
   $logger.notice("dicts receive message: #{raw_message}")
   message = MultiJson.decode raw_message.last
@@ -19,4 +20,5 @@ while true
     words = Stopword.filter message["body"].delete("words")
     $redis.rpush "streaming/messages", MultiJson.encode(type: "add_words", body: message["body"].merge(words: words) )
   end
+  $redis.incr "dicts/messages/outgoing"
 end
