@@ -10,7 +10,7 @@ $logger.notice("load dictionaries")
 while true
   $redis.incr "dicts/messages/incoming"
   raw_message = $redis.blpop "dicts/messages", 0
-  $logger.notice("dicts receive message: #{raw_message.replace('%', '%%')}")
+  $logger.notice("dicts receive message: #{raw_message.last.gsub('%', '%%')}")
   message = MultiJson.decode raw_message.last
   case message["type"]
   when "segment"
