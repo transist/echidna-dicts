@@ -2,7 +2,7 @@
 class Stopword
   class <<self
     def filter(words)
-      words.select { |word| !is?(word) }
+      words.select { |word| word.length > 1 && !is?(word) }
     end
 
     def add(word)

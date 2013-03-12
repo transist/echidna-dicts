@@ -2,11 +2,16 @@
 require "spec_helper"
 
 describe Stopword do
-  it "should filter stopwords" do
-    Stopword.add "，"
-    Stopword.add "我"
+  context ".filter" do
+    it "should filter stopwords" do
+      Stopword.add "我在"
 
-    expect(Stopword.filter(["我", "，", "中国"])).to eq ["中国"]
+      expect(Stopword.filter(["我在", "中国"])).to eq ["中国"]
+    end
+
+    it "should filter single character" do
+      expect(Stopword.filter(["我", "，", "中国"])).to eq ["中国"]
+    end
   end
 
   it "should add stopword" do
