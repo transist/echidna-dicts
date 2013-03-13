@@ -12,6 +12,10 @@ describe Stopword do
     it "should filter single character" do
       expect(Stopword.filter(["我", "，", "中国"])).to eq ["中国"]
     end
+
+    it "should filter username" do
+      expect(Stopword.filter(["@flyerhzm"])).to eq []
+    end
   end
 
   it "should add stopword" do

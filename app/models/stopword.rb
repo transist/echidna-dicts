@@ -2,7 +2,7 @@
 class Stopword
   class <<self
     def filter(words)
-      words.select { |word| word.length > 1 && !is?(word) }
+      words.select { |word| !single_character?(word) && !username?(word) && !is?(word) }
     end
 
     def add(word)
@@ -15,6 +15,14 @@ class Stopword
 
     def is?(word)
       $redis.sismember key, word
+    end
+
+    def single_character?(word)
+      word.length == 1
+    end
+
+    def username?(word)
+      word[0] == '@'
     end
 
     private
