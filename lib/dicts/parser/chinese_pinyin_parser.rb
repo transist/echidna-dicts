@@ -8,6 +8,7 @@ module Dicts
         File.open(DICT_FILENAME, 'r') do |file|
           file.each_line do |line|
             char_hex, pinyin = line.split(' ')
+            # convert from Unicode codepoint to Unicode character
             char = [char_hex.hex].pack("U")
             Homonym.add_pinyin(char, pinyin)
           end
