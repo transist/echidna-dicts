@@ -19,6 +19,7 @@ while true
   when "stopword"
     words = Stopword.filter message["body"].delete("words")
     $redis.lpush "streaming/messages", MultiJson.encode(type: "add_words", body: message["body"].merge(words: words) )
+  # TODO: log error when unhandled message type
   end
   $redis.incr "dicts/messages/outgoing"
 end
